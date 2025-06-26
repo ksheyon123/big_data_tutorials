@@ -34,7 +34,7 @@ def csv_to_json_formatter(csv_file_path: str) -> List[Dict[str, Any]]:
     try:
         # CSV 파일 읽기
         df = pd.read_csv(csv_file_path)
-        
+
         # NaN 값을 None으로 변환하여 JSON 직렬화 가능하게 만들기
         df = df.where(pd.notnull(df), None)
         
@@ -136,7 +136,6 @@ def print_json_sample(data: List[Dict[str, Any]], num_samples: int = 3) -> None:
         print(json.dumps(data[i], ensure_ascii=False, indent=2))
         print("-" * 50)
 
-
 # 사용 예시
 if __name__ == "__main__":
     # CSV 파일 경로
@@ -154,7 +153,7 @@ if __name__ == "__main__":
         print("\n특정 행(첫 번째 행) JSON 변환 결과:")
         first_row = csv_row_to_json(csv_file, 0)
         print(json.dumps(first_row, ensure_ascii=False, indent=2))
-        
+
         print("JSON 파일로 저장 (선택사항)")
         save_json_to_file(json_data, "titanic_data.json")
         
